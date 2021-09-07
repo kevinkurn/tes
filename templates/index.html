@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mission to Mars</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+</head>
+
+<body>
+    <div class="container-fluid">
+        <div class="jumbotron text-center">
+          <h1>Mission to Mars</h1>
+          <p><a class="btn btn-primary btn-lg" href="/update" role="button">Scrape New Data</a></p>
+        </div>
+        <h2><strong>Latest Mars News</strong></h2>
+        <h3><strong>{{ data.news_title }}</strong></h3>
+        <h3>{{ data.news_p }}</h3>
+        <br>
+    
+        <div class="row">
+          <div class="col-md-6 align-self-start">
+            <h2><strong>Featured Mars Image</strong></h2>
+            <img src={{ data.featured_image_url }} alt="Mars Featured Image">
+          </div>
+          <div class="col-md-6 align-self-end text-center">
+            <h2><strong>Mars Facts</strong></h2>
+            <div class="align-self-end text-center">{{ data.mars_fact|safe }}</div>
+          </div>
+        </div>
+        <br>
+        <br>
+    
+        <div class='container'>
+          <div class="text-center">
+            <h1><strong>Mars Hemispheres</strong></h1>
+          </div>
+          <div class="row">
+              {% for image in data.hemisphere_titles %}
+    
+              <div class="col-md-6 text-center">
+                <div class="card-group">
+                  <div class="card">
+                    <img src="{{ image.img_url }}" class="card-img-top" alt="..." style="width:400px">
+                    <div class="card-body">
+                      <h5 class="card-title">{{ image.title }}</h5>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              {% endfor %}
+          </div>
+        </div>
+      </div>
+</body>
+</html>
